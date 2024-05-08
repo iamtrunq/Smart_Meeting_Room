@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+        body{ font: 14px sans-serif; 
+            
+            }
+        .wrapper{ float: left; width: 25%; padding: 30px; margin: 20px; height: 550x; background-color: aliceblue;}
+		.box{ margin: left; width: 20%; height: 10%;}
+        .colorbox{width: 60px; height: 60px;border-radius: 30px;}
+        .centered{
+            display: flex;
+            align-items: center;
+			justify-content: center;}
+            @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&display=swap');
+       
+            body{
+  overflow:hidden;
+  margin:0;
+}
+
+.light-bulb-on{
+  height:50px;
+  width:50px;
+  background-color:lightgray;
+  border: double 2px black;
+  border-radius:100%;
+        
+}
+
+.light-bulb-base{
+  height:20px;
+  width:40px;
+  background-color:#838080;
+  margin-top:-8px;
+  margin-left: 5px;
+  border-radius:0 0 10% 10%;
+}
+
+.column {
+  width: 50%;
+  float: left;
+  /* border: 1px solid black;  */
+  padding: 10px;
+  height: 150px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+.count-box {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 5px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            background-color: aliceblue;
+		}
+
+		.count-box span {
+			font-size: 2rem;
+			margin: 0;
+			color: #333;
+			text-align: center;
+		}
+
+		.count-box p {
+			font-size: 1rem;
+			margin: 0;
+			color: #666;
+			text-align: center;
+		}      
+
+        
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="centered">
+        <h2>Nguyen Duc Duy - 20146314, Ta Cao Van - 20146457, Nguyen Viet Trung - 20146077</h2>
+    </div>
+    <div class="centered">
+    <div class="wrapper border border-2 rounded border-primary">
+        <div class="centered"><h1>CONTROL</h1></div>
+        <form id = "AM_Form">
+
+            <!-- State --><br>
+            
+            <div class = "centered">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  id="Mode" name = "Mode" value="1">
+                <label class="form-check-label" for="inlineRadio1">Auto</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" n id="Mode" name = "Mode" value="0">
+                <label class="form-check-label" for="inlineRadio2">Manual</label>
+            </div>
+        </div>
+            </form>
+
+        <br><br>
+        <div class="column">
+            <h4 class = "centered"style ="border: 1px solid lightgreen;background-color: lightgreen;">Light</h4>
+        <form id = "Lamp_Form">
+        <br>
+        <!-- <label style = "font-size: 20px;">State_Lamp</label><br> -->
+        State_Light<br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"  id="State_Lamp1" name = "State_Lamp" value="1">
+            <label class="form-check-label" for="inlineRadio1">On</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" n id="State_Lamp2" name = "State_Lamp" value="0">
+            <label class="form-check-label" for="inlineRadio2">Off</label>
+        </div>
+    
+        
+    
+        </form>
+        <form id = "Lamp_Form_Auto">
+            Set_Lux<br>
+            <input type="number" id="Set_Lamp" name = "Set_Lamp">
+            <!-- <input type="submit" class="btn btn-primary" value="Apply"> -->
+        </form>
+        
+    </div>
+        
+        <div class="column">
+        <h4 class = "centered"style ="border: 1px solid lightgreen;background-color: lightgreen;">Window</h4>
+        <br>
+        <form id = "Windown_Form">
+            <!-- State_Windown<br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  id="State_Windown1" name = "State_Windown" value="1" >
+                <label class="form-check-label" for="inlineRadio1">On</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" n id="State_Windown2" name = "State_Windown" value="0">
+                <label class="form-check-label" for="inlineRadio2">Off</label>
+            </div>
+            <br>
+            
+            <br> -->
+            Percent<br>
+            <input type="range" class="form-range" id = "Percent_Windown" name="Percent_Windown" min="0" max="10" id="red">
+            </form>
+        </div>
+        <br>
+        <div class="column">
+            <h4 class = "centered"style ="border: 1px solid lightgreen;background-color: lightgreen;">Fan</h4>
+            <form id = "Fan_Form">
+                State_Fan<br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio"  id="State_Fan1" name = "State_Fan" value="1" >
+                    <label class="form-check-label" for="inlineRadio1">On</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" n id="State_Fan2" name = "State_Fan" value="0">
+                    <label class="form-check-label" for="inlineRadio2">Off</label>
+                </div>
+ 
+                </form>
+        </div>
+    </div>
+
+    <!-- <div class="wrapper border border-2 rounded border-primary">
+        
+    </div> -->
+    <div class="wrapper border border-2 rounded border-primary">
+        
+        <div class="centered"><h1>STATE</h1></div>
+        <br>
+        <div class="column">
+            
+                <div class="light-bulb-on" id = "light"></div>
+                <div class="light-bulb-base"></div>
+            
+        </div>
+        <div class="column"><br>
+            <span id = "Light"></span>
+        </div>
+        <div class="column">
+            <img src="people.png" width="100" height="100">
+        </div>
+        <div class="column">
+            <br><br>
+            <span id = "People"></span>
+        </div>
+        <div class="column">
+            <img src="window.png" width="100" height="100">
+        </div>
+        <div class="column">
+            <br><br>
+            <span id = "Window"></span>
+        </div>
+        <div class="column">
+            <img src="Lux.png" width="100" height="100">
+        </div>
+        <div class="column">
+            <br><br>
+            <span id = "Lux"></span>
+        </div>
+        <div class="column">
+            <img src="Fan.png" width="100" height="100">
+        </div>
+        <div class="column">
+            <br><br>
+            <span id = "Fan"></span>
+        </div>
+        
+    </div>
+</div>
+    <script>
+        var State_Lamp1 = document.getElementById("State_Lamp1")
+        var State_Lamp2 = document.getElementById("State_Lamp2")
+        
+        var Set_Lamp    = document.getElementById("Set_Lamp")
+        var Percent_Windown = document.getElementById("Percent_Windown")
+        var State_Fan1 = document.getElementById("State_Fan1")
+        var State_Fan2 = document.getElementById("State_Fan2")
+        $(document).ready(function(){
+            $(document).on('input','#AM_Form', function(){
+                $.post('write0.php',$('#AM_Form').serialize());
+                return false;
+            });
+            $(document).on('input','#Lamp_Form', function(){
+                $.post('write.php',$('#Lamp_Form').serialize());
+                return false;
+            });
+            $(document).on('input','#Lamp_Form_Auto', function(){
+                $.post('write3.php',$('#Lamp_Form_Auto').serialize());
+                return false;
+            });
+            $(document).on('input','#Windown_Form', function(){
+                $.post('write1.php',$('#Windown_Form').serialize());
+                return false;
+            });
+            $(document).on('input','#Fan_Form', function(){
+                $.post('write2.php',$('#Fan_Form').serialize());
+                return false;
+            });
+            $(document).on('input','#AM_Form', function(){
+                const Mode1 = document.querySelector('input[name="Mode"]:checked');
+                var Mode2 = Mode1.value;
+                
+                if (Mode1.value == 1){
+                    State_Lamp1.disabled = true;
+                    State_Lamp2.disabled = true;
+                    Set_Lamp.disabled    = false;
+                    
+                    Percent_Windown.disabled = true;
+                    State_Fan1.disabled = false;
+                    State_Fan2.disabled = false;
+                }
+                else if (Mode1.value == 0){
+                    State_Lamp1.disabled = false;
+                    State_Lamp2.disabled = false;
+                    Set_Lamp.disabled    = true;
+                    
+                    Percent_Windown.disabled = false;
+                    State_Fan1.disabled = false;
+                    State_Fan2.disabled = false;
+
+                }
+            });
+            updateData();
+        });
+       
+
+        setInterval(updateData,1000); // repeat ham updateRGB moi 1s
+        function updateData(){
+            // gui http request xuong server
+            $.post("read.php",
+            function(data){
+                // doc gia tri tu server gui len
+                //console.log(data);
+                var State_Lamp = data[0].State;
+                //console.log(State_Lamp)
+                if (State_Lamp == 1){
+                    document.getElementById("light").style.background = 'yellow';
+                }
+                else if (State_Lamp == 0){
+                    document.getElementById("light").style.background = 'lightgray';
+                }
+            }) 
+            $.post("read1.php",
+            function(data1){
+                // doc gia tri tu server gui len
+                //console.log(data1);
+                var Percent_Windown = data1[0].Percent;
+                document.getElementById("Window").innerHTML = Percent_Windown;
+
+            })
+            $.post("read2.php",
+            function(data2){
+                // doc gia tri tu server gui len
+                //console.log(data1);
+                var State_Fan = data2[0].State;
+                if (State_Fan == 1){
+                    document.getElementById("Fan").innerHTML = "ON"; 
+                }
+                else{
+                    document.getElementById("Fan").innerHTML = "OFF";
+                }
+                
+
+            })
+            $.post("read0.php",
+            function(data0){
+                // doc gia tri tu server gui len
+                // console.log(data0);
+                var People = data0[0].People;
+                if (People == 1){
+                    document.getElementById("People").innerHTML = "YES"; 
+                }
+                else{
+                    document.getElementById("People").innerHTML = "NO";
+                }
+                var Lux = data0[0].Lux;
+                // console.log(Lux);
+                document.getElementById("Lux").innerHTML = Lux;
+            }) 
+            
+        }   
+    </script>
+</body>
+</html>
